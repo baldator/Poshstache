@@ -9,11 +9,11 @@ os: WMF 5
 
 install:
   - cinst -y pester --version 3.4.2
+  - cinst -y psake
 
 build: false
 
 test_script:
-  - ps: install-module psake
   - ps: . .\build.ps1
 # Test with PS version 4
   - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\build.ps1
