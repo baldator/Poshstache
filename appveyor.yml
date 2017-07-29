@@ -9,6 +9,7 @@ os: WMF 5
 
 install:
   - cinst -y pester --version 3.4.2
+  - cinst -y psake --version 4.6.0
 
 build: false
 
