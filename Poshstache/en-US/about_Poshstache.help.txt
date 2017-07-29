@@ -1,15 +1,10 @@
 TOPIC
-    Poshstache
+    Poshstache Mustache TextFormatting
 
 SHORT DESCRIPTION
-    You should considering providing an introduction and overview of your
-    module here.
+    Module Poshstache is a Powershell implementation of Mustache.
 
 LONG DESCRIPTION
-    Discuss what the "primary" commands are in your module especially if
-    there are many commands.  Discuss how to get started using this module
-    providing examples where appropriate.
-
-YOUR HEADER HERE
-    About topics in PowerShell are free-form text.  Add headers to your
-    about topic as necessary.
+     Mustache is logic-less templates.
+     Mustache syntax can be found here: https://mustache.github.io/.
+     This module is based on the .NET Mustache implementation (https://github.com/jdiamond/Nustache)
