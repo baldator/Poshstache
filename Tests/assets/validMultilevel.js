@@ -1,6 +1,6 @@
 {
     test: {
-        name: 'Powershell';
+        name: 'Powershell',
         value: 121
     }
 }

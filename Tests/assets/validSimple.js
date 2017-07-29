@@ -1,4 +1,4 @@
 {
-    name: 'Powershell';
-    value: 123;
+    name: 'Powershell',
+    value: 123
 }
