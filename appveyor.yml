@@ -19,11 +19,3 @@ test_script:
   - ps: . .\build.ps1
 # Test with PS version 4
   - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\build.ps1
-
-on_finish:
-    - ps: |
-        # Publish the contents of the Release folder
-        Add-Type -assemblyname System.IO.Compression.FileSystem
-        $zipPath = "$pwd\Poshstache.zip"
-        [System.IO.Compression.ZipFile]::CreateFromDirectory("$pwd\Release", $zipPath)
-        Push-AppveyorArtifact $zipPath
