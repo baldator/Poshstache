@@ -103,6 +103,7 @@ Task StageFiles -depends Init, Clean, BeforeStageFiles, CoreStageFiles, AfterSta
 }
 
 Task CoreStageFiles -requiredVariables ModuleOutDir, SrcRootDir {
+    $ModuleOutDir = "$OutDir\$ModuleName"
     if (!(Test-Path -LiteralPath $ModuleOutDir)) {
         New-Item $ModuleOutDir -ItemType Directory -Verbose:$VerbosePreference > $null
     }
