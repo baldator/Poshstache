@@ -12,7 +12,7 @@ This module is based on the .NET Mustache implementation (https://github.com/jdi
 
 ```Powershell
 Install-Module Poshstache
-ConvertTo-PoshstacheTemplate -InputString "Hi {{name}}!" -ParameterObject @{name:'bob'}
+ConvertTo-PoshstacheTemplate -InputString "Hi {{name}}!" -ParametersObject "{name:'bob'}"
 ```
 
 # About Mustache
