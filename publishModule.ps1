@@ -11,9 +11,7 @@ Install-Module -Name PowerShellGet -Force -Confirm:$false
 Remove-Module -Name PowerShellGet -Force -ErrorAction Ignore
 Import-Module -Name PowerShellGet
 
-$moduleFolderPath = "$env:APPVEYOR_BUILD_FOLDER\PoshtachePublish"
-$null = mkdir $moduleFolderPath
-Get-ChildItem -Path $env:APPVEYOR_BUILD_FOLDER/Release/Poshstache | Copy-Item -Destination $moduleFolderPath
+$moduleFolderPath = "$env:APPVEYOR_BUILD_FOLDER"
 
 ## Publish module to PowerShell Gallery
 $publishParams = @{
