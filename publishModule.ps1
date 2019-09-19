@@ -19,7 +19,7 @@ Get-ChildItem -Path $env:APPVEYOR_BUILD_FOLDER/Release/Poshstache | Copy-Item -D
 $publishParams = @{
     Path = $moduleFolderPath
     NuGetApiKey = $env:nuget_apikey
-    Repository = 'PSGal<lery'
+    Repository = 'PSGallery'
     Force = $true
     Confirm = $false
 }
