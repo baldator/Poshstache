@@ -1,3 +1,5 @@
+$ErrorActionPreference" = "Stop"
+
 $provParams = @{
     Name = 'NuGet'
     MinimumVersion = '2.8.5.208'
