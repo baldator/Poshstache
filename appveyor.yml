@@ -19,5 +19,5 @@ test_script:
   - ps: . .\build.ps1
 # Test with PS version 4
   - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\build.ps1
-publish_psmodule:
+deploy_script:
   - ps: . .\publishModule.ps1
