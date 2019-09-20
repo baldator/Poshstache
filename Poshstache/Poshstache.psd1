@@ -12,7 +12,7 @@
 RootModule = 'Poshstache.psm1'
 
 # Numero di versione del modulo.
-ModuleVersion = '0.1.1'
+ModuleVersion = '0.1.2'
 
 # Edizioni di PS supportate
 # CompatiblePSEditions = @()

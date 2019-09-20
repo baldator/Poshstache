@@ -4,6 +4,11 @@
 # We can force this by adding [skip ci] or [ci skip] anywhere in commit message
 skip_commits:
   message: /updated readme.*/
+  
+branches:
+  # whitelist
+  only:
+    - master
 
 os: WMF 5
 
@@ -19,3 +24,5 @@ test_script:
   - ps: . .\build.ps1
 # Test with PS version 4
   - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\build.ps1
+deploy_script:
+  - ps: . .\publishModule.ps1
