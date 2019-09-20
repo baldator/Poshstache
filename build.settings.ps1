@@ -139,6 +139,18 @@ Properties {
     # a path.  This parameter is passed through to Invoke-Pester's -OutputFormat parameter.
     [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
     $TestOutputFormat = "NUnitXml"
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
+    $ModuleOutDir = "$OutDir\$ModuleName"
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
+    $UpdatableHelpOutDir = "$OutDir\UpdatableHelp"
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
+    $SharedProperties = @{}
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
+    $LineSep = "-" * 78
 }
 
 ###############################################################################

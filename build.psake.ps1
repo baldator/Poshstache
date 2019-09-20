@@ -62,17 +62,6 @@
 # Private properties.
 ###############################################################################
 Properties {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $ModuleOutDir = "$OutDir\$ModuleName"
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $UpdatableHelpOutDir = "$OutDir\UpdatableHelp"
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $SharedProperties = @{}
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $LineSep = "-" * 78
 }
 
 ###############################################################################
