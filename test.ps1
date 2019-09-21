@@ -4,7 +4,6 @@ $CodeCoverageEnabled = $true
 $TestRootDir = "$PSScriptRoot\Tests"
 $CodeCoverageFiles = "$SrcRootDir\*.ps1", "$SrcRootDir\*.psm1"
 
-
 if (!(Get-Module Pester -ListAvailable)) {
     "Pester module is not installed. Skipping $($psake.context.currentTaskName) task."
     return
