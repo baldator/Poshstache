@@ -19,7 +19,7 @@ function Update-CodeCoveragePercent {
         $CodeCoverage = 0,
 
         [string]
-        $TextFilePath = "$Env:BHProjectPath\Readme.md"
+        $TextFilePath = "$PSScriptRoot\README.md"
     )
 
     $BadgeColor = switch ($CodeCoverage) {
