@@ -5,11 +5,6 @@
 skip_commits:
   message: /updated readme.*/
 
-branches:
-  # whitelist
-  only:
-    - master
-
 os: WMF 5
 
 install:
