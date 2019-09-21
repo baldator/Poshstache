@@ -1,6 +1,7 @@
 # Poshstache PowerShell module
 
 [![Build status](https://ci.appveyor.com/api/projects/status/gbqt5h9mat4124vr?svg=true)](https://ci.appveyor.com/project/baldator/poshstache)
+![Test Coverage](https://img.shields.io/badge/coverage.svg)
 
 Module Poshstache is a Powershell implementation of Mustache.
 Mustache is logic-less templates.
