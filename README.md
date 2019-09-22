@@ -1,7 +1,6 @@
 # Poshstache PowerShell module
 
 [![Build status](https://ci.appveyor.com/api/projects/status/gbqt5h9mat4124vr?svg=true)](https://ci.appveyor.com/project/baldator/poshstache)
-<<<<<<< HEAD
 ![Test Coverage](https://img.shields.io/badge/coverage-97%25-brightgreen.svg?maxAge=60)
 [![Poshstache](https://img.shields.io/powershellgallery/v/Poshstache.svg?style=flat-square&label=Poshstache)](https://www.powershellgallery.com/packages/Poshstache/)
 
