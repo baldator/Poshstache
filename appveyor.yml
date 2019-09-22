@@ -37,5 +37,5 @@ on_success:
   - git checkout %APPVEYOR_REPO_BRANCH%
   - git add *.psd1
   - git add *.md
-  - git commit -m "[skip ci] AppVeyor Build %APPVEYOR_BUILD_VERSION%"
+  - git diff --quiet && git diff --staged --quiet || git commit -m "[skip ci] AppVeyor Build %APPVEYOR_BUILD_VERSION%"
   - git push
