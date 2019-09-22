@@ -81,8 +81,12 @@ Task Init -requiredVariables OutDir {
 Task Clean -depends Init -requiredVariables OutDir, ModuleOutDir {
     # Maybe a bit paranoid but this task nuked \ on my laptop. Good thing I was not running as admin.
     if ($OutDir.Length -gt 3 -and $ModuleOutDir.Length -gt 3) {
-        Get-ChildItem $OutDir | Remove-Item -Recurse -Force -Verbose:$VerbosePreference
-        Get-ChildItem $ModuleOutDir | Remove-Item -Recurse -Force -Verbose:$VerbosePreference
+        if (Test-Path -LiteralPath $OutDir){
+            Get-ChildItem $OutDir | Remove-Item -Recurse -Force -Verbose:$VerbosePreference
+        }
+        if (Test-Path -LiteralPath $ModuleOutDir){
+            Get-ChildItem $ModuleOutDir | Remove-Item -Recurse -Force -Verbose:$VerbosePreference
+        }
     }
     else {
         Write-Verbose "$($psake.context.currentTaskName) - `$OutDir '$OutDir' must be longer than 3 characters."

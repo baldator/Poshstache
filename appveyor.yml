@@ -37,11 +37,5 @@ on_success:
   - git checkout %APPVEYOR_REPO_BRANCH%
   - git add *.psd1
   - git add *.md
-  - ps: ->
-      if(git diff-tree -r --name-only --no-commit-id master){
-        git commit -m "[skip ci] AppVeyor Build %APPVEYOR_BUILD_VERSION%"
-        git push
-      }
-      else{
-        Write-output "Nothing to push"
-      }
+  - git commit -m "[skip ci] AppVeyor Build %APPVEYOR_BUILD_VERSION%"
+  - git push
