@@ -12,7 +12,7 @@
 RootModule = 'Poshstache.psm1'
 
 # Numero di versione del modulo.
-ModuleVersion = '0.1.2'
+ModuleVersion = '0.1.3'
 
 # Edizioni di PS supportate
 # CompatiblePSEditions = @()
@@ -27,10 +27,10 @@ Author = 'Marco Torello'
 CompanyName = 'Sconosciuto'
 
 # Informazioni sul copyright per il modulo
-Copyright = '(c) 2017 Marco Torello. All rights reserved.'
+Copyright = '(c) 2019 Marco Torello. Licensed under MIT license.'
 
 # Descrizione delle funzionalità offerte dal modulo
-Description = 'A Powershell implementation of Mustache'
+Description = 'A Powershell implementation of Mustache based on Stubble'
 
 # Versione minima del motore di Windows PowerShell necessaria per il modulo
 # PowerShellVersion = ''
@@ -107,7 +107,12 @@ PrivateData = @{
         # IconUri = ''
 
         # Note sulla versione di questo modulo
-        ReleaseNotes = 'First Release'
+        ReleaseNotes = @"
+    v 0.1.3 - Replace Nustache with Stubble
+    v 0.1.2 - Bugfix
+    v 0.1.1 - Add Pester tests
+    v 0.1.0 - First release
+"@
 
     } # Fine della tabella hash PSData
 

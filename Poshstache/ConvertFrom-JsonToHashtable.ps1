@@ -39,9 +39,7 @@ function ConvertFrom-JsonToHashtable {
 
 	# Perform a test to determine if the inputobject is null, if it is then return an empty hash table
 	if ([String]::IsNullOrEmpty($InputObject)) {
-
 		$dict = @{}
-
 	} else {
 
 		# load the required dll
