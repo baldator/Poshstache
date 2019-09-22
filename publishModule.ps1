@@ -14,7 +14,7 @@ Install-Module -Name PowerShellGet -Force -Confirm:$false
 Remove-Module -Name PowerShellGet -Force -ErrorAction Ignore
 Import-Module -Name PowerShellGet
 
-$localModule = Import-module "$moduleName\$moduleName.psd1" -force
+$localModule = Import-module "$env:APPVEYOR_BUILD_FOLDER\$moduleName\$moduleName.psd1" -force
 $remoteModule = Get-module $moduleName
 $moduleFolderPath = "$env:APPVEYOR_BUILD_FOLDER\$moduleName"
 
