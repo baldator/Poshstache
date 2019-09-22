@@ -27,7 +27,7 @@ Author = 'Marco Torello'
 CompanyName = 'Sconosciuto'
 
 # Informazioni sul copyright per il modulo
-Copyright = '(c) 2019 Marco Torello. All rights reserved.'
+Copyright = '(c) 2019 Marco Torello. Licensed under MIT license.'
 
 # Descrizione delle funzionalità offerte dal modulo
 Description = 'A Powershell implementation of Mustache based on Stubble'
