@@ -1,5 +1,6 @@
 $ErrorActionPreference = "Stop"
 
+$moduleName = "Poshstache"
 $provParams = @{
     Name = 'NuGet'
     MinimumVersion = '2.8.5.208'
@@ -13,7 +14,9 @@ Install-Module -Name PowerShellGet -Force -Confirm:$false
 Remove-Module -Name PowerShellGet -Force -ErrorAction Ignore
 Import-Module -Name PowerShellGet
 
-$moduleFolderPath = "$env:APPVEYOR_BUILD_FOLDER\Poshstache"
+$localModule = Import-module "$moduleName\$moduleName.psd1" -force
+$remoteModule = Get-module $moduleName
+$moduleFolderPath = "$env:APPVEYOR_BUILD_FOLDER\$moduleName"
 
 ## Publish module to PowerShell Gallery
 $publishParams = @{
@@ -23,4 +26,11 @@ $publishParams = @{
     Force = $true
     Confirm = $false
 }
-Publish-Module @publishParams
+
+if ($localModule -gt $remoteModule){
+    Publish-Module @publishParams
+}
+Else{
+    Write-output "No need to publish the module"
+}
+
