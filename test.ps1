@@ -7,6 +7,8 @@ $SrcRootDir  = "$PSScriptRoot\$ModuleName"
 $CodeCoverageEnabled = $true
 $TestRootDir = "$PSScriptRoot\Tests"
 $CodeCoverageFiles = "$SrcRootDir\*.ps1", "$SrcRootDir\*.psm1"
+$TestOutputFile = "$PSScriptRoot\TestsResults.xml"
+$TestOutputFormat = "NUnitXml"
 
 ####################
 # Functions
@@ -80,6 +82,11 @@ try {
                                 $testResult.CodeCoverage.NumberOfCommandsAnalyzed * 100)
         "Pester code coverage on specified files: ${testCoverage}%"
         Update-CodeCoveragePercent -CodeCoverage $testCoverage
+    }
+
+    if($TestOutputFile){
+        $wc = New-Object 'System.Net.WebClient'
+        $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $TestOutputFile))
     }
 }
 finally {
