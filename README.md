@@ -51,6 +51,6 @@ ConvertTo-PoshstacheTemplate -InputFile "C:\Templates\template.config" -Paramete
 
 ## About Mustache
 
-  * [Mustache webpage](https://mustache.github.io/)
-  * [Mustache demo](https://mustache.github.io/#demo)
-  * [Mustache syntax reference](https://mustache.github.io/mustache.5.html)
+* [Mustache webpage](https://mustache.github.io/)
+* [Mustache demo](https://mustache.github.io/#demo)
+* [Mustache syntax reference](https://mustache.github.io/mustache.5.html)
