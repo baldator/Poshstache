@@ -1,1 +1,1 @@
-name: 'powershell'
+name: "powershell";
