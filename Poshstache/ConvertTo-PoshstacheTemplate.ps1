@@ -42,11 +42,11 @@ function ConvertTo-PoshstacheTemplate{
         Throw "The input ParametersObject is not a valid JSON string"
     }
 
-    #Load Stubble dll
+    #Load Nustache dll
     $path = Get-ModulePath "Poshstache"
-    [Reflection.Assembly]::LoadFile("$Path\binary\Stubble.Core.dll") | Out-Null
+    [Reflection.Assembly]::LoadFile("$Path\binary\Nustache.Core.dll") | Out-Null
     try{
-        return [Stubble.Core.Render]::StringToString($InputString, $JsonInput)
+        return [Nustache.Core.Render]::StringToString($InputString, $JsonInput)
     } catch [Exception] {
         $_.Exception.Message
     }
