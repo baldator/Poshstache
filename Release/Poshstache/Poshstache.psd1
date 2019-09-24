@@ -12,7 +12,7 @@
 RootModule = 'Poshstache.psm1'
 
 # Numero di versione del modulo.
-ModuleVersion = '0.1.4'
+ModuleVersion = '0.1.3'
 
 # Edizioni di PS supportate
 # CompatiblePSEditions = @()
@@ -108,7 +108,6 @@ PrivateData = @{
 
         # Note sulla versione di questo modulo
         ReleaseNotes = @"
-    v 0.1.4 - Rollback to Nustache; will create a new module for Stubble
     v 0.1.3 - Replace Nustache with Stubble
     v 0.1.2 - Bugfix
     v 0.1.1 - Add Pester tests
