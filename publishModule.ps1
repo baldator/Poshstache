@@ -15,7 +15,8 @@ Remove-Module -Name PowerShellGet -Force -ErrorAction Ignore
 Import-Module -Name PowerShellGet
 
 $localModule = Import-module "$env:APPVEYOR_BUILD_FOLDER\Release\$moduleName\$moduleName.psd1" -force
-$remoteModule = Get-module $moduleName
+$localModule = Get-module $moduleName
+$remoteModule = Find-Module $moduleName
 $moduleFolderPath = "$env:APPVEYOR_BUILD_FOLDER\Release\$moduleName"
 
 ## Publish module to PowerShell Gallery
@@ -27,7 +28,10 @@ $publishParams = @{
     Confirm = $false
 }
 
-if ($localModule -gt $remoteModule){
+Write-output "Local version: ${localModule.version}"
+Write-output "Remote version: ${remoteModule.version}"
+
+if ($localModule.version -gt $remoteModule.version){
     Publish-Module @publishParams
 }
 Else{
