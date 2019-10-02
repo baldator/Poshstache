@@ -19,7 +19,6 @@ install:
       Write-Host "Installing..."
       cmd /c start /wait msiexec /i $msiPath /quiet
       del $msiPath
-      $env:Path = "C:\Program Files\PowerShell\6.2.3;$env:Path"
 
 build: false
 
@@ -28,9 +27,12 @@ test_script:
 build_script:
   - ps: . .\build.ps1
 # Test with PS version 4
-  - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\build.ps1
+  - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\test.ps1
 # Test with PS version 6.2
-  - ps: powershell.exe -version 6.2 -executionpolicy bypass -noprofile -file .\build.ps1
+  - ps: |
+    $env:Path = "C:\Program Files\PowerShell\6.0.2;$env:Path"
+    $PSVersionTable.PSVersion
+    .\test.ps1
 for:
 -
   branches:
