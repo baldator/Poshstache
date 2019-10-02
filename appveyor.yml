@@ -31,7 +31,7 @@ build_script:
 # Test with PS version 6.2
   - ps: |
     $env:Path = "C:\Program Files\PowerShell\6.0.2;$env:Path"
-    $PSVersionTable.PSVersion
+    Write-Host $PSVersionTable.PSVersion
     . .\test.ps1
 for:
 -
