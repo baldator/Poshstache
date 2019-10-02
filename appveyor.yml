@@ -12,13 +12,6 @@ install:
   - ps: |
       Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force | Out-Null
       Install-Module psake -Scope CurrentUser -Force | Out-Null
-      Write-Host "Installing PowerShell Core..." -ForegroundColor Cyan
-      Write-Host "Downloading..."
-      $msiPath = "$env:TEMP\PowerShell-6.2.3-win-x64.msi"
-      (New-Object Net.WebClient).DownloadFile('https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x64.msi', $msiPath)
-      Write-Host "Installing..."
-      cmd /c start /wait msiexec /i $msiPath /quiet
-      del $msiPath
 
 build: false
 
@@ -28,10 +21,6 @@ build_script:
   - ps: . .\build.ps1
 # Test with PS version 4
   - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\test.ps1
-# Test with PS version 6.2
-  - ps: |
-    $env:Path = "C:\Program Files\PowerShell\6.2.3;$env:Path"
-    . .\test.ps1
 for:
 -
   branches:
