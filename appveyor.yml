@@ -32,7 +32,7 @@ build_script:
   - ps: |
     $env:Path = "C:\Program Files\PowerShell\6.0.2;$env:Path"
     $PSVersionTable.PSVersion
-    .\test.ps1
+    . .\test.ps1
 for:
 -
   branches:
