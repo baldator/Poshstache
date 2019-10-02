@@ -30,8 +30,7 @@ build_script:
   - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\test.ps1
 # Test with PS version 6.2
   - ps: |
-    $env:Path = "C:\Program Files\PowerShell\6.0.2;$env:Path"
-    Write-Host $PSVersionTable.PSVersion
+    $env:Path = "C:\Program Files\PowerShell\6.2.3;$env:Path"
     . .\test.ps1
 for:
 -
