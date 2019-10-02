@@ -21,6 +21,8 @@ build_script:
   - ps: . .\build.ps1
 # Test with PS version 4
   - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\build.ps1
+# Test with PS version 6.2
+  - ps: powershell.exe -version 6.2 -executionpolicy bypass -noprofile -file .\build.ps1
 for:
 -
   branches:

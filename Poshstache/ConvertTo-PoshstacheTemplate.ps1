@@ -36,11 +36,24 @@ function ConvertTo-PoshstacheTemplate{
     }
 
     #Check if input object is valid
-    try {
-        $JsonInput = ConvertFrom-JsonToHashtable $ParametersObject
-    } catch {
-        Throw "The input ParametersObject is not a valid JSON string"
+
+    if ($PSVersionTable.PSVersion.Major -gt 5){
+        try {
+            $JSonInput = ConvertFrom-Json $ParametersObject | ConvertFrom-PSObjectToHashtable
+        }
+        catch{
+            Throw $_
+        }
     }
+    else{
+        try {
+            $JsonInput = ConvertFrom-JsonToHashtable $ParametersObject
+        } catch {
+            Throw "The input ParametersObject is not a valid JSON string"
+        }
+    }
+
+    write-output $JsonInput
 
     #Load Nustache dll
     $path = Get-ModulePath "Poshstache"
