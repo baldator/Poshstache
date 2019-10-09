@@ -36,31 +36,33 @@ function ConvertTo-PoshstacheTemplate{
     }
 
     #Check if input object is valid
+    try {
+        $JSonInput = ConvertFrom-Json $ParametersObject | ConvertFrom-PSObjectToHashtable
+    }
+    catch{
+        Throw $_
+    }
 
-    if ($PSVersionTable.PSVersion.Major -gt 5){
-        try {
-            $JSonInput = ConvertFrom-Json $ParametersObject | ConvertFrom-PSObjectToHashtable
-        }
-        catch{
-            Throw $_
+    if($PSversiontable.psversion.Major -lt 6){
+        #Load Nustache dll
+        $path = Get-ModulePath "Poshstache"
+        [Reflection.Assembly]::LoadFile("$Path\binary\Nustache.Core.dll") | Out-Null
+        try{
+            return [Nustache.Core.Render]::StringToString($InputString, $JsonInput)
+        } catch [Exception] {
+            $_.Exception.Message
         }
     }
     else{
-        try {
-            $JsonInput = ConvertFrom-JsonToHashtable $ParametersObject
-        } catch {
-            Throw "The input ParametersObject is not a valid JSON string"
+        # Load Stubble dll
+        $path = Get-ModulePath "Poshstache"
+        [Reflection.Assembly]::LoadFile("$Path\binary\Stubble.Core.dll") | Out-Null
+
+        try{
+            $builder = [Stubble.Core.Builders.StubbleBuilder]::new().Build()
+            return $builder.render($InputString, $JsonInput)
+        } catch [Exception] {
+            $_.Exception.Message
         }
-    }
-
-    write-output $JsonInput
-
-    #Load Nustache dll
-    $path = Get-ModulePath "Poshstache"
-    [Reflection.Assembly]::LoadFile("$Path\binary\Nustache.Core.dll") | Out-Null
-    try{
-        return [Nustache.Core.Render]::StringToString($InputString, $JsonInput)
-    } catch [Exception] {
-        $_.Exception.Message
     }
 }
