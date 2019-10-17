@@ -46,7 +46,10 @@ if (!(Get-Module Pester -ListAvailable)) {
 }
 
 Import-Module Pester
-Import-Module PesterMatchHashtable
+try {
+    Import-Module PesterMatchHashtable
+}
+catch{}
 
 try {
     Microsoft.PowerShell.Management\Push-Location -LiteralPath $TestRootDir
