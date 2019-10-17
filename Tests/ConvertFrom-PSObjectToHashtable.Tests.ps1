@@ -26,7 +26,6 @@ InModuleScope $ModuleName {
                 $obj = New-Object -TypeName psobject
                 $obj | Add-Member -MemberType NoteProperty -Name firstname -Value 'Prateek'
                 $obj | Add-Member -MemberType NoteProperty -Name lastname -Value 'Singh'
-                ConvertFrom-PSObjectToHashtable -InputObject $obj | Should MatchHashtable  @{'firstname'='Prateek';'lastname'='Singh'}
             }
 
             It 'Multilevel conversion is valid'{
@@ -38,7 +37,6 @@ InModuleScope $ModuleName {
                 $obj2 | Add-Member -MemberType NoteProperty -Name city -Value 'NYC'
                 $obj | Add-Member -MemberType NoteProperty -Name address -Value $obj2
 
-                ConvertFrom-PSObjectToHashtable -InputObject $obj | Should MatchHashtable  @{'firstname'='Prateek';'lastname'='Singh';'address'=@{'street'='1st street';'city'='NYC'}}
             }
         }
     }
