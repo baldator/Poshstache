@@ -65,5 +65,27 @@ Describe 'ConvertTo-PoshstacheTemplate' {
                 ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\templateSimple.html" -ParametersObject $inputString
             } | Should not Throw
         }
+
+        It "Valid JSON input - Array Template" {
+            {
+                $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\validArray.js" -Raw
+                ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject $inputString
+            } | Should not Throw
+        }
+
+        It "Valid JSON input - Array Template containing objects" {
+            {
+                $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\validArrayObject.js" -Raw
+                ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArrayObject_template.html" -ParametersObject $inputString
+            } | Should not Throw
+        }
+
+
+        It "Valid JSON input - Array Template containing objects" {
+            {
+                $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\validArrayObject.js" -Raw
+                ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArrayObject_template.html" -ParametersObject $inputString
+            } | Should equal $result
+        }
     }
 }

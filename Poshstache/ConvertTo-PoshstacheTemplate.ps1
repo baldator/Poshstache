@@ -37,7 +37,7 @@ function ConvertTo-PoshstacheTemplate{
 
     #Check if input object is valid
     try {
-        $JSonInput = ConvertFrom-Json $ParametersObject | ConvertFrom-PSObjectToHashtable
+        $JSonInput = ConvertFrom-Json $ParametersObject | Convertto-hashtableCustom
     }
     catch{
         Throw $_

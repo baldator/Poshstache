@@ -1,7 +1,7 @@
 # Poshstache PowerShell module
 
 [![Build status](https://ci.appveyor.com/api/projects/status/gbqt5h9mat4124vr?svg=true)](https://ci.appveyor.com/project/baldator/poshstache)
-![Test Coverage](https://img.shields.io/badge/coverage-65%25-orange.svg?maxAge=60)
+![Test Coverage](https://img.shields.io/badge/coverage-69%25-orange.svg?maxAge=60)
 [![Poshstache](https://img.shields.io/powershellgallery/v/Poshstache.svg?style=flat-square&label=Poshstache)](https://www.powershellgallery.com/packages/Poshstache/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -9,8 +9,7 @@ Module Poshstache is a Powershell implementation of Mustache.
 Mustache is logic-less templates.
 
 Version 0.1.2 of the module was based on the Nustache, a [.NET Mustache implementation](https://github.com/jdiamond/Nustache).
-
-Newer versions of the module are based on [Stubble](https://github.com/StubbleOrg/Stubble)
+Newer versions implement Nustache for Windows Powershell version and [Stubble](https://github.com/StubbleOrg/Stubble) for PowerShell Core versions.
 
 ## Usage
 
