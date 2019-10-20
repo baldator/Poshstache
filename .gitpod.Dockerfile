@@ -6,6 +6,8 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsof
 RUN dpkg -i packages-microsoft-prod.deb
 RUN apt-get update && apt-get install -y
 RUN add-apt-repository universe
+RUN apt-get install libssl1.0.0
+RUN apt-get install libicu60
 RUN apt-get install -y powershell
 RUN apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
