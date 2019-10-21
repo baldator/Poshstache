@@ -37,7 +37,13 @@ function ConvertTo-PoshstacheTemplate{
 
     #Check if input object is valid
     try {
-        $JSonInput = ConvertFrom-Json $ParametersObject | Convertto-hashtableCustom
+        if($PSversiontable.psversion.Major -lt 6){
+            [Reflection.Assembly]::LoadFile("D:\NextCloud\workspace\Powershell\Poshstache\Poshstache\binary\Newtonsoft.Json.dll") | Out-Null
+            $JSonInput = [Newtonsoft.Json.Linq.JObject]::Parse($ParametersObject)
+        }
+        else{
+            $JSonInput = ConvertFrom-Json $ParametersObject -asHashtable
+        }
     }
     catch{
         Throw $_
