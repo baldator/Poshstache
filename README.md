@@ -7,8 +7,9 @@
 
 Module Poshstache is a Powershell implementation of Mustache.
 Mustache is logic-less templates.
+The module support both PowerShell Core and Windows PowerShell.
 
-Version 0.1.2 of the module was based on the Nustache, a [.NET Mustache implementation](https://github.com/jdiamond/Nustache).
+Version 0.1.2 of the module is based on the Nustache, a [.NET Mustache implementation](https://github.com/jdiamond/Nustache).
 Newer versions implement Nustache for Windows Powershell version and [Stubble](https://github.com/StubbleOrg/Stubble) for PowerShell Core versions.
 
 ## Usage
@@ -53,3 +54,12 @@ ConvertTo-PoshstacheTemplate -InputFile "C:\Templates\template.config" -Paramete
 * [Mustache webpage](https://mustache.github.io/)
 * [Mustache demo](https://mustache.github.io/#demo)
 * [Mustache syntax reference](https://mustache.github.io/mustache.5.html)
+
+## Release note
+v 0.1.6 - Support complex input object
+v 0.1.5 - Add support for PowerShell Core
+v 0.1.4 - Rollback to Nustache; will create a new module for Stubble
+v 0.1.3 - Replace Nustache with Stubble
+v 0.1.2 - Bugfix
+v 0.1.1 - Add Pester tests
+v 0.1.0 - First release
