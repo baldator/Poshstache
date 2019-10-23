@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="27" errors="0" failures="2" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-10-21" time="23:21:20">
+  <environment user="marco" machine-name="DESKTOP-1RJ022N" cwd="D:\NextCloud\workspace\Powershell\Poshstache\Tests" user-domain="DESKTOP-1RJ022N" platform="Microsoft Windows 10 Home|C:\WINDOWS|\Device\Harddisk1\Partition3" nunit-version="2.5.8.0" os-version="10.0.18362" clr-version="4.0.30319.42000" />
+  <culture-info current-culture="it-IT" current-uiculture="it-IT" />
+  <test-suite type="Powershell" name="Pester" executed="True" result="Failure" success="False" time="8.3616" asserts="0">
+    <results>
+      <test-suite type="TestFixture" name="ConvertFrom-PSObjectToHashtable" executed="True" result="Failure" success="False" time="3.3435" asserts="0" description="ConvertFrom-PSObjectToHashtable">
+        <results>
+          <test-case description="Should return null" name="ConvertFrom-PSObjectToHashtable.Should return null" time="2.2583" asserts="0" success="False" result="Failure" executed="True">
+            <failure>
+              <message>Termine 'ConvertFrom-PSObjectToHashtable' non riconosciuto come nome di cmdlet, funzione, programma eseguibile o file script. Controllare l'ortografia del nome o verificare che il percorso sia incluso e corretto, quindi riprovare.</message>
+              <stack-trace>at line: 13 in D:\NextCloud\workspace\Powershell\Poshstache\Tests\ConvertFrom-PSObjectToHashtable.Tests.ps1</stack-trace>
+            </failure>
+          </test-case>
+          <test-case description="Conversion Not Null" name="ConvertFrom-PSObjectToHashtable.Conversion Not Null" time="0.5823" asserts="0" success="False" result="Failure" executed="True">
+            <failure>
+              <message>Termine 'ConvertFrom-PSObjectToHashtable' non riconosciuto come nome di cmdlet, funzione, programma eseguibile o file script. Controllare l'ortografia del nome o verificare che il percorso sia incluso e corretto, quindi riprovare.</message>
+              <stack-trace>at line: 22 in D:\NextCloud\workspace\Powershell\Poshstache\Tests\ConvertFrom-PSObjectToHashtable.Tests.ps1</stack-trace>
+            </failure>
+          </test-case>
+          <test-case description="Conversion is valid" name="ConvertFrom-PSObjectToHashtable.Conversion is valid" time="0.3818" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Multilevel conversion is valid" name="ConvertFrom-PSObjectToHashtable.Multilevel conversion is valid" time="0.1211" asserts="0" success="True" result="Success" executed="True" />
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="ConvertTo-PoshstacheTemplate" executed="True" result="Success" success="True" time="2.8209" asserts="0" description="ConvertTo-PoshstacheTemplate">
+        <results>
+          <test-case description="throw if input is empty" name="ConvertTo-PoshstacheTemplate.throw if input is empty" time="0.5193" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="throw if InputObject is not a valid JSON - Invalid Value" name="ConvertTo-PoshstacheTemplate.throw if InputObject is not a valid JSON - Invalid Value" time="0.1601" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="throw if InputObject is not a valid JSON - Invalid Format" name="ConvertTo-PoshstacheTemplate.throw if InputObject is not a valid JSON - Invalid Format" time="0.1592" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Valid JSON input - Should not Throw" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Should not Throw" time="0.1789" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="throw if file is empty" name="ConvertTo-PoshstacheTemplate.throw if file is empty" time="0.3655" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="throw if file doen't exist" name="ConvertTo-PoshstacheTemplate.throw if file doen't exist" time="0.1597" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="throw if InputObject is not a valid JSON - Invalid Value" name="ConvertTo-PoshstacheTemplate.throw if InputObject is not a valid JSON - Invalid Value" time="0.1621" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Valid JSON input - Should not Throw" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Should not Throw" time="0.1632" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Valid JSON input - Array Template" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Array Template" time="0.1601" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Valid JSON input - Array Template containing objects" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Array Template containing objects" time="0.1632" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Valid JSON input" name="ConvertTo-PoshstacheTemplate.Valid JSON input" time="0.3173" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Valid JSON input - Array Template" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Array Template" time="0.1589" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Valid JSON input - Array Template containing objects" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Array Template containing objects" time="0.1534" asserts="0" success="True" result="Success" executed="True" />
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="Get-ModulePath" executed="True" result="Success" success="True" time="0.6053" asserts="0" description="Get-ModulePath">
+        <results>
+          <test-case description="throw if Module doesn't exist" name="Get-ModulePath.throw if Module doesn't exist" time="0.4558" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="don't throw if Module doesn't exist" name="Get-ModulePath.don't throw if Module doesn't exist" time="0.1496" asserts="0" success="True" result="Success" executed="True" />
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="Poshstache Manifest" executed="True" result="Success" success="True" time="1.5919" asserts="0" description="Poshstache Manifest">
+        <results>
+          <test-case description="has a valid manifest" name="Poshstache Manifest.has a valid manifest" time="0.5902" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has a valid name in the manifest" name="Poshstache Manifest.has a valid name in the manifest" time="0.1434" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has a valid root module" name="Poshstache Manifest.has a valid root module" time="0.1445" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has a valid version in the manifest" name="Poshstache Manifest.has a valid version in the manifest" time="0.1415" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has a valid description" name="Poshstache Manifest.has a valid description" time="0.1411" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has a valid author" name="Poshstache Manifest.has a valid author" time="0.1441" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has a valid guid" name="Poshstache Manifest.has a valid guid" time="0.1447" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has a valid copyright" name="Poshstache Manifest.has a valid copyright" time="0.1424" asserts="0" success="True" result="Success" executed="True" />
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
