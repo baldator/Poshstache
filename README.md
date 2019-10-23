@@ -1,7 +1,7 @@
 # Poshstache PowerShell module
 
 [![Build status](https://ci.appveyor.com/api/projects/status/gbqt5h9mat4124vr?svg=true)](https://ci.appveyor.com/project/baldator/poshstache)
-![Test Coverage](https://img.shields.io/badge/coverage-79%25-yellow.svg?maxAge=60)
+![Test Coverage](https://img.shields.io/badge/coverage-yellow.svg?maxAge=60)
 [![Poshstache](https://img.shields.io/powershellgallery/v/Poshstache.svg?style=flat-square&label=Poshstache)](https://www.powershellgallery.com/packages/Poshstache/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -56,10 +56,10 @@ ConvertTo-PoshstacheTemplate -InputFile "C:\Templates\template.config" -Paramete
 * [Mustache syntax reference](https://mustache.github.io/mustache.5.html)
 
 ## Release note
-v 0.1.6 - Support complex input object
-v 0.1.5 - Add support for PowerShell Core
-v 0.1.4 - Rollback to Nustache; will create a new module for Stubble
-v 0.1.3 - Replace Nustache with Stubble
-v 0.1.2 - Bugfix
-v 0.1.1 - Add Pester tests
-v 0.1.0 - First release
+v 0.1.6 - Support complex input object \
+v 0.1.5 - Add support for PowerShell Core \
+v 0.1.4 - Rollback to Nustache; will create a new module for Stubble \
+v 0.1.3 - Replace Nustache with Stubble \
+v 0.1.2 - Bugfix \
+v 0.1.1 - Add Pester tests \
+v 0.1.0 - First release \
