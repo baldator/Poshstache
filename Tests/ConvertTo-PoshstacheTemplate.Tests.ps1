@@ -36,7 +36,7 @@ Describe 'ConvertTo-PoshstacheTemplate' {
         }
     }
 
-    Context 'Poshstache Input File' {
+    Context 'Poshstache Input File format' {
 
         It "throw if file is empty" {
             {
@@ -64,6 +64,59 @@ Describe 'ConvertTo-PoshstacheTemplate' {
                 $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\validSimple.js" -Raw
                 ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\templateSimple.html" -ParametersObject $inputString
             } | Should not Throw
+        }
+
+        It "Valid JSON input - Array Template" {
+            {
+                $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\validArray.js" -Raw
+                ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject $inputString
+            } | Should not Throw
+        }
+
+        It "Valid JSON input - Array Template containing objects" {
+            {
+                $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\validArrayObject.js" -Raw
+                ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArrayObject_template.html" -ParametersObject $inputString
+            } | Should not Throw
+        }
+    }
+
+
+    Context 'Poshstache Input File values' {
+
+        It "Valid JSON input" {
+            $resultValue = "<h1>Hi Powershell!</h1>"
+            $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\validSimple.js" -Raw
+            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\templateSimple.html" -ParametersObject $inputString
+            $result | Should Be $resultValue
+        }
+
+        It "Valid JSON input - Array Template" {
+            $result = "<p>John is 30 years old. He has the following cars:
+    <ul>
+        <li>Ford</li>
+        <li>BMW</li>
+        <li>Fiat</li>
+    </ul>
+</p>"
+            $resultOneLine = $result -replace '\r*\n', ''
+            $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\validArray.js" -Raw
+            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject $inputString
+            $result = $result  -replace '\r*\n', ''
+            $result | Should Be $resultOneLine
+        }
+
+        It "Valid JSON input - Array Template containing objects" {
+            $result = "<p>John is 30 years old. He has the following cars:
+    <ul>
+        <li>Ford</li><li>BMW</li><li>Fiat</li>
+    </ul>
+</p>"
+            $resultOneLine = $result -replace '\r*\n', ''
+            $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\validArrayObject.js" -Raw
+            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArrayObject_template.html" -ParametersObject $inputString
+            $result = $result  -replace '\r*\n', ''
+            $result | Should Be $resultOneLine
         }
     }
 }
