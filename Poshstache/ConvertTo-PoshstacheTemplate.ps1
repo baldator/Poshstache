@@ -61,8 +61,17 @@ function ConvertTo-PoshstacheTemplate{
     }
     else{
         # Load Stubble dll
-        [Reflection.Assembly]::LoadFile("$Path\binary\System.Threading.Tasks.Extensions.dll") | Out-Null
-        [Reflection.Assembly]::LoadFile("$Path\binary\Stubble.Core.dll") | Out-Null
+        Add-Type -Path "$Path\binary\System.Threading.Tasks.Extensions.dll"
+
+        try{
+            Add-Type -Path "$Path\binary\Stubble.Core.dll" -ReferencedAssemblies "System.Threading.Tasks.Extensions"
+        }
+        catch{
+            $_.Exception.LoaderExceptions
+            {
+                Throw $_
+            }
+        }
 
         try{
             $builder = [Stubble.Core.Builders.StubbleBuilder]::new().Build()
