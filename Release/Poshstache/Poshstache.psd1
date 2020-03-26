@@ -12,7 +12,7 @@
 RootModule = 'Poshstache.psm1'
 
 # Numero di versione del modulo.
-ModuleVersion = '0.1.6'
+ModuleVersion = '0.1.7'
 
 # Edizioni di PS supportate
 # CompatiblePSEditions = @()
@@ -108,6 +108,7 @@ PrivateData = @{
 
         # Note sulla versione di questo modulo
         ReleaseNotes = @"
+    v 0.1.7 - Fix dependencies and update Stubble
     v 0.1.6 - Support complex input object
     v 0.1.5 - Add support for PowerShell Core
     v 0.1.4 - Rollback to Nustache; will create a new module for Stubble
