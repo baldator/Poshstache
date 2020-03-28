@@ -22,6 +22,7 @@ test_script:
   - ps: . .\test.ps1
 
 for:
+-
    image:
      only:
        - WMF 5
@@ -29,12 +30,10 @@ build_script:
   - ps: . .\build.ps1
 
 for:
+-
   branches:
     only:
       - master
-  image:
-    only:
-      - WMF 5
   deploy_script:
     - ps: . .\publishModule.ps1
 
