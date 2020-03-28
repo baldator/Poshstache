@@ -21,17 +21,16 @@ build: false
 test_script:
   - ps: . .\test.ps1
 
-artifacts:
--
-   image:
-     only:
-       - WMF 5
-build_script:
-  - ps: . .\build.ps1
-
 for:
 -
-  branches:
+  matrix:
+    only:
+        - image: WMF 5
+    build_script:
+      - ps: . .\build.ps1
+
+for:
+- branches:
     only:
       - master
   deploy_script:
