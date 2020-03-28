@@ -52,16 +52,18 @@ function ConvertTo-PoshstacheTemplate{
 
     if($PSversiontable.psversion.Major -lt 6){
         $libPath = "$Path\binary\WindowsPowerShell"
+        # Add .net dependencies
+        Add-Type -Path "$libPath\System.Collections.Immutable.dll"
     }
     else{
 		$libPath = "$Path\binary"
 	}
 
 	# Load Stubble dll
-	Add-Type -Path "$Path\binary\System.Threading.Tasks.Extensions.dll"
+	Add-Type -Path "$libPath\System.Threading.Tasks.Extensions.dll"
 
 	try{
-		Add-Type -Path "$Path\binary\Stubble.Core.dll" -ReferencedAssemblies "System.Threading.Tasks.Extensions"
+		Add-Type -Path "$libPath\Stubble.Core.dll"
 	}
 	catch{
 		$_.Exception.LoaderExceptions
