@@ -39,8 +39,7 @@ function ConvertTo-PoshstacheTemplate{
     #Check if input object is valid
     try {
         if($PSversiontable.psversion.Major -lt 6){
-            [Reflection.Assembly]::LoadFile("$path\binary\Newtonsoft.Json.dll") | Out-Null
-            $JSonInput = [Newtonsoft.Json.Linq.JObject]::Parse($ParametersObject)
+            $JSonInput = ConvertTo-JsonToHashtable $ParametersObject
         }
         else{
             $JSonInput = ConvertFrom-Json $ParametersObject -asHashtable
@@ -49,6 +48,8 @@ function ConvertTo-PoshstacheTemplate{
     catch{
         Throw $_
     }
+
+    Write-verbose $JSonInput
 
     if($PSversiontable.psversion.Major -lt 6){
         $libPath = "$Path\binary\WindowsPowerShell"
