@@ -5,7 +5,9 @@
 skip_commits:
   message: /updated readme.*/
 
-os: WMF 5
+image:
+  - Visual Studio 2019
+  - WMF 5
 
 install:
   - cinst -y pester --version 3.4.2
@@ -18,15 +20,21 @@ build: false
 
 test_script:
   - ps: . .\test.ps1
+
+for:
+   image:
+     only:
+       - WMF 5
 build_script:
   - ps: . .\build.ps1
-# Test with PS version 4
-  - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\test.ps1
+
 for:
--
   branches:
     only:
       - master
+  image:
+    only:
+      - WMF 5
   deploy_script:
     - ps: . .\publishModule.ps1
 
