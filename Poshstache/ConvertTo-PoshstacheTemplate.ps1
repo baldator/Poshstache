@@ -39,8 +39,7 @@ function ConvertTo-PoshstacheTemplate{
     #Check if input object is valid
     try {
         if($PSversiontable.psversion.Major -lt 6){
-            [Reflection.Assembly]::LoadFile("$path\binary\Newtonsoft.Json.dll") | Out-Null
-            $JSonInput = [Newtonsoft.Json.Linq.JObject]::Parse($ParametersObject)
+            $JSonInput = ConvertFrom-JsonToHashtable $ParametersObject
         }
         else{
             $JSonInput = ConvertFrom-Json $ParametersObject -asHashtable
@@ -50,25 +49,34 @@ function ConvertTo-PoshstacheTemplate{
         Throw $_
     }
 
+    Write-verbose $JSonInput
+
     if($PSversiontable.psversion.Major -lt 6){
-        #Load Nustache dll
-        [Reflection.Assembly]::LoadFile("$Path\binary\Nustache.Core.dll") | Out-Null
-        try{
-            return [Nustache.Core.Render]::StringToString($InputString, $JsonInput)
-        } catch [Exception] {
-            $_.Exception.Message
-        }
+        $libPath = "$Path\binary\WindowsPowerShell"
+        # Add .net dependencies
+        Add-Type -Path "$libPath\System.Collections.Immutable.dll"
     }
     else{
-        # Load Stubble dll
-        [Reflection.Assembly]::LoadFile("$Path\binary\System.Threading.Tasks.Extensions.dll") | Out-Null
-        [Reflection.Assembly]::LoadFile("$Path\binary\Stubble.Core.dll") | Out-Null
+		$libPath = "$Path\binary"
+	}
 
-        try{
-            $builder = [Stubble.Core.Builders.StubbleBuilder]::new().Build()
-            return $builder.render($InputString, $JsonInput)
-        } catch [Exception] {
-            $_.Exception.Message
-        }
-    }
+	# Load Stubble dll
+	Add-Type -Path "$libPath\System.Threading.Tasks.Extensions.dll"
+
+	try{
+		Add-Type -Path "$libPath\Stubble.Core.dll"
+	}
+	catch{
+		$_.Exception.LoaderExceptions
+		{
+			Throw $_
+		}
+	}
+
+	try{
+		$builder = [Stubble.Core.Builders.StubbleBuilder]::new().Build()
+		return $builder.render($InputString, $JsonInput)
+	} catch [Exception] {
+		$_.Exception.Message
+	}
 }
