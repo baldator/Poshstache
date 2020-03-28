@@ -39,7 +39,7 @@ function ConvertTo-PoshstacheTemplate{
     #Check if input object is valid
     try {
         if($PSversiontable.psversion.Major -lt 6){
-            $JSonInput = ConvertTo-JsonToHashtable $ParametersObject
+            $JSonInput = ConvertFrom-JsonToHashtable $ParametersObject
         }
         else{
             $JSonInput = ConvertFrom-Json $ParametersObject -asHashtable
