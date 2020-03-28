@@ -21,7 +21,7 @@ build: false
 test_script:
   - ps: . .\test.ps1
 
-build_script_windows_powershell:
+artifacts:
 -
    image:
      only:
@@ -29,7 +29,7 @@ build_script_windows_powershell:
 build_script:
   - ps: . .\build.ps1
 
-publish_module:
+for:
 -
   branches:
     only:
