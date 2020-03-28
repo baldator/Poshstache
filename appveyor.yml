@@ -28,9 +28,8 @@ for:
         - image: WMF 5
     build_script:
       - ps: . .\build.ps1
-
-for:
-- branches:
+- 
+  branches:
     only:
       - master
   deploy_script:
