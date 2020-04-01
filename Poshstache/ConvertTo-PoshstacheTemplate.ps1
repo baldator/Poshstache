@@ -10,6 +10,8 @@ function ConvertTo-PoshstacheTemplate{
         The path of the file containing the template
     .PARAMETER ParametersObject
         A JSON String containing mustache parameters
+    .PARAMETER ValidJSON
+        Switch to determine if true value in JSON input convert to PowerShell $true (default) or 'true' (switch present)
     .EXAMPLE
         ConvertTo-PoshstacheTemplate -InputString "Hi {{name}}!" -ParameterObject @{name:'bob'}
     .EXAMPLE
@@ -25,7 +27,8 @@ function ConvertTo-PoshstacheTemplate{
         [Parameter(ParameterSetName='File',Mandatory=$true)]
         [Parameter(ParameterSetName='String',Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [String] $ParametersObject
+        [String] $ParametersObject,
+        [Switch] $ValidJSON = $false
     )
 
     if($PSCmdlet.ParameterSetName -eq "File"){
@@ -47,6 +50,10 @@ function ConvertTo-PoshstacheTemplate{
     }
     catch{
         Throw $_
+    }
+
+    if($ValidJSON){
+        $JSonInput = ConvertTo-ValidJson $JSonInput
     }
 
     Write-verbose $JSonInput
