@@ -56,8 +56,9 @@ ConvertTo-PoshstacheTemplate -InputFile "C:\Templates\template.config" -Paramete
 * [Mustache syntax reference](https://mustache.github.io/mustache.5.html)
 
 ## Release note
-v 0.1.8 - Windows PowerShell migrate to stubble
-v 0.1.7 - Update stubble and add missing dependencies
+v 0.1.9 - add -ValidJSON parameter \
+v 0.1.8 - Windows PowerShell migrate to stubble \
+v 0.1.7 - Update stubble and add missing dependencies \
 v 0.1.6 - Support complex input object \
 v 0.1.5 - Add support for PowerShell Core \
 v 0.1.4 - Rollback to Nustache; will create a new module for Stubble \
