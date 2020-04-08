@@ -12,7 +12,7 @@
 RootModule = 'Poshstache.psm1'
 
 # Numero di versione del modulo.
-ModuleVersion = '0.1.8'
+ModuleVersion = '0.1.9'
 
 # Edizioni di PS supportate
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Author = 'Marco Torello'
 CompanyName = 'Sconosciuto'
 
 # Informazioni sul copyright per il modulo
-Copyright = '(c) 2019 Marco Torello. Licensed under MIT license.'
+Copyright = '(c) 2020 Marco Torello. Licensed under MIT license.'
 
 # Descrizione delle funzionalità offerte dal modulo
 Description = 'A Powershell implementation of Mustache based on Stubble'
@@ -108,6 +108,7 @@ PrivateData = @{
 
         # Note sulla versione di questo modulo
         ReleaseNotes = @"
+    v 0.1.9 - add -ValidJSON parameter
     v 0.1.8 - Fix import
     v 0.1.7 - Fix dependencies and update Stubble
     v 0.1.6 - Support complex input object
