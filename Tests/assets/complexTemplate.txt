@@ -1,0 +1,3 @@
+"Account_enabled": {
+    "value": {{#AccountEnabled}}true{{/AccountEnabled}}{{^AccountEnabled}}false{{/AccountEnabled}}
+}

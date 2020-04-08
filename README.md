@@ -10,7 +10,7 @@ Mustache is logic-less templates.
 The module support both PowerShell Core and Windows PowerShell.
 
 Version 0.1.2 of the module is based on the Nustache, a [.NET Mustache implementation](https://github.com/jdiamond/Nustache).
-Newer versions implement Nustache for Windows Powershell version and [Stubble](https://github.com/StubbleOrg/Stubble) for PowerShell Core versions.
+Newer versions implement Nustache [Stubble](https://github.com/StubbleOrg/Stubble) for both Windows PowerShell and PowerShell Core versions.
 
 ## Usage
 
