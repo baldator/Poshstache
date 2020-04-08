@@ -13,7 +13,6 @@ install:
       Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force | Out-Null
       Install-Module psake -Scope CurrentUser -Force | Out-Null
       Install-Module PesterMatchHashtable
-
 build: false
 
 test_script:

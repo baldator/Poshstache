@@ -1,60 +1,135 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="27" errors="0" failures="2" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-10-21" time="23:21:20">
-  <environment user="marco" machine-name="DESKTOP-1RJ022N" cwd="D:\NextCloud\workspace\Powershell\Poshstache\Tests" user-domain="DESKTOP-1RJ022N" platform="Microsoft Windows 10 Home|C:\WINDOWS|\Device\Harddisk1\Partition3" nunit-version="2.5.8.0" os-version="10.0.18362" clr-version="4.0.30319.42000" />
-  <culture-info current-culture="it-IT" current-uiculture="it-IT" />
-  <test-suite type="Powershell" name="Pester" executed="True" result="Failure" success="False" time="8.3616" asserts="0">
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="24" errors="0" failures="8" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-04-08" time="23:08:42">
+  <environment user-domain="DESKTOP-09ASE11" user="lodh-user" os-version="10.0.19041" platform="Microsoft Windows 10 Pro N|C:\WINDOWS|\Device\Harddisk0\Partition4" nunit-version="2.5.8.0" cwd="C:\workspace\Poshstache\Tests" machine-name="DESKTOP-09ASE11" clr-version="Unknown" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="4.4556" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="ConvertFrom-PSObjectToHashtable" executed="True" result="Failure" success="False" time="3.3435" asserts="0" description="ConvertFrom-PSObjectToHashtable">
+      <test-suite type="TestFixture" name="C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1" executed="True" result="Failure" success="False" time="2.7567" asserts="0" description="C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1">
         <results>
-          <test-case description="Should return null" name="ConvertFrom-PSObjectToHashtable.Should return null" time="2.2583" asserts="0" success="False" result="Failure" executed="True">
-            <failure>
-              <message>Termine 'ConvertFrom-PSObjectToHashtable' non riconosciuto come nome di cmdlet, funzione, programma eseguibile o file script. Controllare l'ortografia del nome o verificare che il percorso sia incluso e corretto, quindi riprovare.</message>
-              <stack-trace>at line: 13 in D:\NextCloud\workspace\Powershell\Poshstache\Tests\ConvertFrom-PSObjectToHashtable.Tests.ps1</stack-trace>
-            </failure>
-          </test-case>
-          <test-case description="Conversion Not Null" name="ConvertFrom-PSObjectToHashtable.Conversion Not Null" time="0.5823" asserts="0" success="False" result="Failure" executed="True">
-            <failure>
-              <message>Termine 'ConvertFrom-PSObjectToHashtable' non riconosciuto come nome di cmdlet, funzione, programma eseguibile o file script. Controllare l'ortografia del nome o verificare che il percorso sia incluso e corretto, quindi riprovare.</message>
-              <stack-trace>at line: 22 in D:\NextCloud\workspace\Powershell\Poshstache\Tests\ConvertFrom-PSObjectToHashtable.Tests.ps1</stack-trace>
-            </failure>
-          </test-case>
-          <test-case description="Conversion is valid" name="ConvertFrom-PSObjectToHashtable.Conversion is valid" time="0.3818" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Multilevel conversion is valid" name="ConvertFrom-PSObjectToHashtable.Multilevel conversion is valid" time="0.1211" asserts="0" success="True" result="Success" executed="True" />
+          <test-suite type="TestFixture" name="ConvertTo-PoshstacheTemplate" executed="True" result="Failure" success="False" time="2.291" asserts="0" description="ConvertTo-PoshstacheTemplate">
+            <results>
+              <test-suite type="TestFixture" name="Poshstache Input String" executed="True" result="Failure" success="False" time="0.7786" asserts="0" description="Poshstache Input String">
+                <results>
+                  <test-case description="throw if input is empty" name="ConvertTo-PoshstacheTemplate.Poshstache Input String.throw if input is empty" time="0.2107" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="throw if InputObject is not a valid JSON - Invalid Value" name="ConvertTo-PoshstacheTemplate.Poshstache Input String.throw if InputObject is not a valid JSON - Invalid Value" time="0.1147" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="throw if InputObject is not a valid JSON - Invalid Format" name="ConvertTo-PoshstacheTemplate.Poshstache Input String.throw if InputObject is not a valid JSON - Invalid Format" time="0.0305" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Valid JSON input - Should not Throw" name="ConvertTo-PoshstacheTemplate.Poshstache Input String.Valid JSON input - Should not Throw" time="0.0588" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected no exception to be thrown, but an exception "Cannot bind parameter 'Path' to the target. Exception setting "Path": "Cannot find path 'C:\Users\lodh-user\Documents\PowerShell\Modules\Poshstache\0.1.7 C:\workspace\Poshstache\Poshstache\binary\System.Threading.Tasks.Extensions.dll' because it does not exist."" was thrown from C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1:32 char:17
+    + …             ConvertTo-PoshstacheTemplate -InputString "TestString" -P …
+    +               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1: line 35
+35:             } | Should Not Throw</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Poshstache Input File format" executed="True" result="Failure" success="False" time="0.8301" asserts="0" description="Poshstache Input File format">
+                <results>
+                  <test-case description="throw if file is empty" name="ConvertTo-PoshstacheTemplate.Poshstache Input File format.throw if file is empty" time="0.0415" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="throw if file doen't exist" name="ConvertTo-PoshstacheTemplate.Poshstache Input File format.throw if file doen't exist" time="0.0313" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="throw if InputObject is not a valid JSON - Invalid Value" name="ConvertTo-PoshstacheTemplate.Poshstache Input File format.throw if InputObject is not a valid JSON - Invalid Value" time="0.0696" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Valid JSON input - Should not Throw" name="ConvertTo-PoshstacheTemplate.Poshstache Input File format.Valid JSON input - Should not Throw" time="0.0462" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected no exception to be thrown, but an exception "Cannot bind parameter 'Path' to the target. Exception setting "Path": "Cannot find path 'C:\Users\lodh-user\Documents\PowerShell\Modules\Poshstache\0.1.7 C:\workspace\Poshstache\Poshstache\binary\System.Threading.Tasks.Extensions.dll' because it does not exist."" was thrown from C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1:65 char:17
+    + …             ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\.. …
+    +               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1: line 66
+66:             } | Should not Throw</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="Valid JSON input - Array Template" name="ConvertTo-PoshstacheTemplate.Poshstache Input File format.Valid JSON input - Array Template" time="0.0731" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected no exception to be thrown, but an exception "Cannot bind parameter 'Path' to the target. Exception setting "Path": "Cannot find path 'C:\Users\lodh-user\Documents\PowerShell\Modules\Poshstache\0.1.7 C:\workspace\Poshstache\Poshstache\binary\System.Threading.Tasks.Extensions.dll' because it does not exist."" was thrown from C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1:72 char:17
+    + …             ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\.. …
+    +               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1: line 73
+73:             } | Should not Throw</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="Valid JSON input - Array Template containing objects" name="ConvertTo-PoshstacheTemplate.Poshstache Input File format.Valid JSON input - Array Template containing objects" time="0.0758" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected no exception to be thrown, but an exception "Cannot bind parameter 'Path' to the target. Exception setting "Path": "Cannot find path 'C:\Users\lodh-user\Documents\PowerShell\Modules\Poshstache\0.1.7 C:\workspace\Poshstache\Poshstache\binary\System.Threading.Tasks.Extensions.dll' because it does not exist."" was thrown from C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1:79 char:17
+    + …             ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\.. …
+    +               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1: line 80
+80:             } | Should not Throw</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Poshstache Input File values" executed="True" result="Failure" success="False" time="0.428" asserts="0" description="Poshstache Input File values">
+                <results>
+                  <test-case description="Valid JSON input" name="ConvertTo-PoshstacheTemplate.Poshstache Input File values.Valid JSON input" time="0.0339" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Cannot bind parameter 'Path' to the target. Exception setting "Path": "Cannot find path 'C:\Users\lodh-user\Documents\PowerShell\Modules\Poshstache\0.1.7 C:\workspace\Poshstache\Poshstache\binary\System.Threading.Tasks.Extensions.dll' because it does not exist."</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1: line 90
+90:             $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\templateSimple.html" -ParametersObject $inputString
+</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="Valid JSON input - Array Template" name="ConvertTo-PoshstacheTemplate.Poshstache Input File values.Valid JSON input - Array Template" time="0.0214" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Cannot bind parameter 'Path' to the target. Exception setting "Path": "Cannot find path 'C:\Users\lodh-user\Documents\PowerShell\Modules\Poshstache\0.1.7 C:\workspace\Poshstache\Poshstache\binary\System.Threading.Tasks.Extensions.dll' because it does not exist."</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1: line 104
+104:             $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject $inputString
+</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="Valid JSON input - Array Template containing objects" name="ConvertTo-PoshstacheTemplate.Poshstache Input File values.Valid JSON input - Array Template containing objects" time="0.0261" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Cannot bind parameter 'Path' to the target. Exception setting "Path": "Cannot find path 'C:\Users\lodh-user\Documents\PowerShell\Modules\Poshstache\0.1.7 C:\workspace\Poshstache\Poshstache\binary\System.Threading.Tasks.Extensions.dll' because it does not exist."</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1: line 117
+117:             $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArrayObject_template.html" -ParametersObject $inputString
+</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="Complex Mustache template conversion" name="ConvertTo-PoshstacheTemplate.Poshstache Input File values.Complex Mustache template conversion" time="0.0501" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Cannot bind parameter 'Path' to the target. Exception setting "Path": "Cannot find path 'C:\Users\lodh-user\Documents\PowerShell\Modules\Poshstache\0.1.7 C:\workspace\Poshstache\Poshstache\binary\System.Threading.Tasks.Extensions.dll' because it does not exist."</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\workspace\Poshstache\Tests\ConvertTo-PoshstacheTemplate.Tests.ps1: line 130
+130:             $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\complexTemplate.txt" -ParametersObject $inputString
+</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="ConvertTo-PoshstacheTemplate" executed="True" result="Success" success="True" time="2.8209" asserts="0" description="ConvertTo-PoshstacheTemplate">
+      <test-suite type="TestFixture" name="C:\workspace\Poshstache\Tests\Get-ModulePath.Tests.ps1" executed="True" result="Success" success="True" time="0.3681" asserts="0" description="C:\workspace\Poshstache\Tests\Get-ModulePath.Tests.ps1">
         <results>
-          <test-case description="throw if input is empty" name="ConvertTo-PoshstacheTemplate.throw if input is empty" time="0.5193" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="throw if InputObject is not a valid JSON - Invalid Value" name="ConvertTo-PoshstacheTemplate.throw if InputObject is not a valid JSON - Invalid Value" time="0.1601" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="throw if InputObject is not a valid JSON - Invalid Format" name="ConvertTo-PoshstacheTemplate.throw if InputObject is not a valid JSON - Invalid Format" time="0.1592" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Valid JSON input - Should not Throw" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Should not Throw" time="0.1789" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="throw if file is empty" name="ConvertTo-PoshstacheTemplate.throw if file is empty" time="0.3655" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="throw if file doen't exist" name="ConvertTo-PoshstacheTemplate.throw if file doen't exist" time="0.1597" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="throw if InputObject is not a valid JSON - Invalid Value" name="ConvertTo-PoshstacheTemplate.throw if InputObject is not a valid JSON - Invalid Value" time="0.1621" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Valid JSON input - Should not Throw" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Should not Throw" time="0.1632" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Valid JSON input - Array Template" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Array Template" time="0.1601" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Valid JSON input - Array Template containing objects" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Array Template containing objects" time="0.1632" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Valid JSON input" name="ConvertTo-PoshstacheTemplate.Valid JSON input" time="0.3173" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Valid JSON input - Array Template" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Array Template" time="0.1589" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Valid JSON input - Array Template containing objects" name="ConvertTo-PoshstacheTemplate.Valid JSON input - Array Template containing objects" time="0.1534" asserts="0" success="True" result="Success" executed="True" />
+          <test-suite type="TestFixture" name="Get-ModulePath" executed="True" result="Success" success="True" time="0.297" asserts="0" description="Get-ModulePath">
+            <results>
+              <test-suite type="TestFixture" name="Test module exists" executed="True" result="Success" success="True" time="0.1934" asserts="0" description="Test module exists">
+                <results>
+                  <test-case description="throw if Module doesn't exist" name="Get-ModulePath.Test module exists.throw if Module doesn't exist" time="0.0371" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="don't throw if Module doesn't exist" name="Get-ModulePath.Test module exists.don't throw if Module doesn't exist" time="0.0291" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="Get-ModulePath" executed="True" result="Success" success="True" time="0.6053" asserts="0" description="Get-ModulePath">
+      <test-suite type="TestFixture" name="C:\workspace\Poshstache\Tests\Manifest.Tests.ps1" executed="True" result="Success" success="True" time="1.3308" asserts="0" description="C:\workspace\Poshstache\Tests\Manifest.Tests.ps1">
         <results>
-          <test-case description="throw if Module doesn't exist" name="Get-ModulePath.throw if Module doesn't exist" time="0.4558" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="don't throw if Module doesn't exist" name="Get-ModulePath.don't throw if Module doesn't exist" time="0.1496" asserts="0" success="True" result="Success" executed="True" />
-        </results>
-      </test-suite>
-      <test-suite type="TestFixture" name="Poshstache Manifest" executed="True" result="Success" success="True" time="1.5919" asserts="0" description="Poshstache Manifest">
-        <results>
-          <test-case description="has a valid manifest" name="Poshstache Manifest.has a valid manifest" time="0.5902" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="has a valid name in the manifest" name="Poshstache Manifest.has a valid name in the manifest" time="0.1434" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="has a valid root module" name="Poshstache Manifest.has a valid root module" time="0.1445" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="has a valid version in the manifest" name="Poshstache Manifest.has a valid version in the manifest" time="0.1415" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="has a valid description" name="Poshstache Manifest.has a valid description" time="0.1411" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="has a valid author" name="Poshstache Manifest.has a valid author" time="0.1441" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="has a valid guid" name="Poshstache Manifest.has a valid guid" time="0.1447" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="has a valid copyright" name="Poshstache Manifest.has a valid copyright" time="0.1424" asserts="0" success="True" result="Success" executed="True" />
+          <test-suite type="TestFixture" name="Poshstache Manifest" executed="True" result="Success" success="True" time="1.296" asserts="0" description="Poshstache Manifest">
+            <results>
+              <test-suite type="TestFixture" name="Validation" executed="True" result="Success" success="True" time="1.1752" asserts="0" description="Validation">
+                <results>
+                  <test-case description="has a valid manifest" name="Poshstache Manifest.Validation.has a valid manifest" time="0.2468" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid name in the manifest" name="Poshstache Manifest.Validation.has a valid name in the manifest" time="0.0712" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid root module" name="Poshstache Manifest.Validation.has a valid root module" time="0.0231" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid version in the manifest" name="Poshstache Manifest.Validation.has a valid version in the manifest" time="0.0417" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid description" name="Poshstache Manifest.Validation.has a valid description" time="0.0193" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid author" name="Poshstache Manifest.Validation.has a valid author" time="0.0201" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid guid" name="Poshstache Manifest.Validation.has a valid guid" time="0.0398" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="has a valid copyright" name="Poshstache Manifest.Validation.has a valid copyright" time="0.0188" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
         </results>
       </test-suite>
     </results>

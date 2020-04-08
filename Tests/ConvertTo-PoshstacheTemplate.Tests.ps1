@@ -118,5 +118,19 @@ Describe 'ConvertTo-PoshstacheTemplate' {
             $result = $result  -replace '\r*\n', ''
             $result | Should Be $resultOneLine
         }
+
+        It "Complex Mustache template conversion" {
+            $result =  @"
+"Account_enabled": {
+    "value": true
+}
+"@
+            $resultOneLine = $result -replace '\r*\n', ''
+            $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\complexTemplate.js" -Raw
+            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\complexTemplate.txt" -ParametersObject $inputString
+            $result = $result  -replace '\r*\n', ''
+            $result | Should Be $resultOneLine
+
+        }
     }
 }
