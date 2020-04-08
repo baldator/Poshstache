@@ -121,7 +121,7 @@ Describe 'ConvertTo-PoshstacheTemplate' {
 
         It "Complex Mustache template conversion" {
             $result =  @"
-Account_enabled": {
+"Account_enabled": {
     "value": true
 }
 "@
