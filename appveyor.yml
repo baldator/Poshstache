@@ -5,9 +5,7 @@
 skip_commits:
   message: /updated readme.*/
 
-image:
-  - Visual Studio 2019
-  - WMF 5
+os: WMF 5
 
 install:
   - cinst -y pester --version 3.4.2
@@ -15,20 +13,16 @@ install:
       Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force | Out-Null
       Install-Module psake -Scope CurrentUser -Force | Out-Null
       Install-Module PesterMatchHashtable
-
 build: false
 
 test_script:
   - ps: . .\test.ps1
-
+build_script:
+  - ps: . .\build.ps1
+# Test with PS version 4
+  - ps: powershell.exe -version 4.0 -executionpolicy bypass -noprofile -file .\test.ps1
 for:
 -
-  matrix:
-    only:
-        - image: WMF 5
-    build_script:
-      - ps: . .\build.ps1
-- 
   branches:
     only:
       - master
