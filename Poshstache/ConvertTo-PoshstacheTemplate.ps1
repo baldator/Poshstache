@@ -28,7 +28,8 @@ function ConvertTo-PoshstacheTemplate{
         [Parameter(ParameterSetName='String',Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [String] $ParametersObject,
-        [Switch] $ValidJSON = $false
+        [Switch] $ValidJSON = $false,
+        [Switch] $hashMap = $false
     )
 
     if($PSCmdlet.ParameterSetName -eq "File"){
@@ -40,16 +41,21 @@ function ConvertTo-PoshstacheTemplate{
     $path = Get-ModulePath "Poshstache"
 
     #Check if input object is valid
-    try {
-        if($PSversiontable.psversion.Major -lt 6){
-            $JSonInput = ConvertFrom-JsonToHashtable $ParametersObject
+    if($hashMap -eq $false){
+        try {
+            if($PSversiontable.psversion.Major -lt 6){
+                $JSonInput = ConvertFrom-JsonToHashtable $ParametersObject
+            }
+            else{
+                $JSonInput = ConvertFrom-Json $ParametersObject -asHashtable
+            }
         }
-        else{
-            $JSonInput = ConvertFrom-Json $ParametersObject -asHashtable
+        catch{
+            Throw $_
         }
     }
-    catch{
-        Throw $_
+    else{
+        $JSonInput = $ParametersObject
     }
 
     if($ValidJSON){

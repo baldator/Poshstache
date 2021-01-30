@@ -34,6 +34,14 @@ Describe 'ConvertTo-PoshstacheTemplate' {
                 ConvertTo-PoshstacheTemplate -InputString "Hi {{testParam.name}}!" -ParametersObject "{testParam:{name:121}}"
             } | Should Not Throw
         }
+
+        It "Valid HashMap input - Should not Throw" {
+            {
+                ConvertTo-PoshstacheTemplate -InputString "TestString" -ParametersObject @{"testParam" = 121} -hashMap
+                ConvertTo-PoshstacheTemplate -InputString "Hi {{testParam}}!" -ParametersObject @{"testParam" = 121} -hashMap
+                ConvertTo-PoshstacheTemplate -InputString "Hi {{testParam.name}}!" -ParametersObject @{"testParam" = @{"name" = 121}} -hashMap
+            } | Should Not Throw
+        }
     }
 
     Context 'Poshstache Input File format' {
@@ -105,6 +113,21 @@ Describe 'ConvertTo-PoshstacheTemplate' {
             $result = $result  -replace '\r*\n', ''
             $result | Should Be $resultOneLine
         }
+
+        It "Valid HashMap input - Array Template" {
+            $result = "<p>John is 30 years old. He has the following cars:
+    <ul>
+        <li>Ford</li>
+        <li>BMW</li>
+        <li>Fiat</li>
+    </ul>
+</p>"
+            $resultOneLine = $result -replace '\r*\n', ''
+            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject @{"name"= 'John'; "cars" = @(@{"carname"="Ford"},@{"carname"="BMW"},@{"carname"="Fiat"});"age"=30} -HashMap
+            $result = $result  -replace '\r*\n', ''
+            $result | Should Be $resultOneLine
+        }
+
 
         It "Valid JSON input - Array Template containing objects" {
             $result = "<p>John is 30 years old. He has the following cars:
