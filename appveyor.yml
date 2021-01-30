@@ -35,7 +35,6 @@ on_success:
   - git config --global user.email "build@appveyor.com"
   - git config --global user.name "Appveyor"
   - git checkout %APPVEYOR_REPO_BRANCH%
-  - git add *.psd1
   - git add *.md
   - git commit -m "[skip ci] AppVeyor Build %APPVEYOR_BUILD_VERSION%"
   - git push
