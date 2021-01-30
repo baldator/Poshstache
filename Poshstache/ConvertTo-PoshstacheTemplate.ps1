@@ -11,7 +11,9 @@ function ConvertTo-PoshstacheTemplate{
     .PARAMETER ParametersObject
         A JSON String containing mustache parameters
     .PARAMETER ValidJSON
-        Switch to determine if true value in JSON input convert to PowerShell $true (default) or 'true' (switch present)
+        Switch to determine if boolean true value in JSON input has to be converted to PowerShell $true (default) or 'true' (switch present)
+    .PARAMETER HashTable
+        Switch to determine if the imput object is a PowerShell Hashtable ($true)
     .EXAMPLE
         ConvertTo-PoshstacheTemplate -InputString "Hi {{name}}!" -ParameterObject @{name:'bob'}
     .EXAMPLE
@@ -27,9 +29,9 @@ function ConvertTo-PoshstacheTemplate{
         [Parameter(ParameterSetName='File',Mandatory=$true)]
         [Parameter(ParameterSetName='String',Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [String] $ParametersObject,
+        [psobject] $ParametersObject,
         [Switch] $ValidJSON = $false,
-        [Switch] $hashMap = $false
+        [Switch] $HashTable = $false
     )
 
     if($PSCmdlet.ParameterSetName -eq "File"){
@@ -41,28 +43,33 @@ function ConvertTo-PoshstacheTemplate{
     $path = Get-ModulePath "Poshstache"
 
     #Check if input object is valid
-    if($hashMap -eq $false){
-        try {
-            if($PSversiontable.psversion.Major -lt 6){
-                $JSonInput = ConvertFrom-JsonToHashtable $ParametersObject
-            }
-            else{
-                $JSonInput = ConvertFrom-Json $ParametersObject -asHashtable
-            }
-        }
-        catch{
-            Throw $_
-        }
+    Write-Verbose "Input object is HashTable: $HashTable"
+    if($HashTable){
+        $JSONObject = $ParametersObject | ConvertTo-Json -Depth 4
+        Write-Verbose "Object converted to JSON: $JSONObject"
+        Write-Verbose $JSONObject.gettype()
     }
     else{
-        $JSonInput = $ParametersObject
+        $JSONObject = $ParametersObject
+    }
+
+    try {
+        if($PSversiontable.psversion.Major -lt 6){
+            $JSonInput = ConvertFrom-JsonToHashtable $JSONObject
+        }
+        else{
+            $JSonInput = ConvertFrom-Json $JSONObject -asHashtable
+        }
+    }
+    catch{
+        Throw $_
     }
 
     if($ValidJSON){
         $JSonInput = ConvertTo-ValidJson $JSonInput
     }
 
-    Write-verbose $JSonInput
+    Write-verbose "Input object: $JSonInput"
 
     if($PSversiontable.psversion.Major -lt 6){
         $libPath = "$Path\binary\WindowsPowerShell"

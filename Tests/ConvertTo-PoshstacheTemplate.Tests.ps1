@@ -35,11 +35,11 @@ Describe 'ConvertTo-PoshstacheTemplate' {
             } | Should Not Throw
         }
 
-        It "Valid HashMap input - Should not Throw" {
+        It "Valid hashTable input - Should not Throw" {
             {
-                ConvertTo-PoshstacheTemplate -InputString "TestString" -ParametersObject @{"testParam" = 121} -hashMap
-                ConvertTo-PoshstacheTemplate -InputString "Hi {{testParam}}!" -ParametersObject @{"testParam" = 121} -hashMap
-                ConvertTo-PoshstacheTemplate -InputString "Hi {{testParam.name}}!" -ParametersObject @{"testParam" = @{"name" = 121}} -hashMap
+                ConvertTo-PoshstacheTemplate -InputString "TestString" -ParametersObject @{"testParam" = 121} -hashTable
+                ConvertTo-PoshstacheTemplate -InputString "Hi {{testParam}}!" -ParametersObject @{"testParam" = 121} -hashTable
+                ConvertTo-PoshstacheTemplate -InputString "Hi {{testParam.name}}!" -ParametersObject @{"testParam" = @{"name" = 121}} -hashTable
             } | Should Not Throw
         }
     }
@@ -114,7 +114,7 @@ Describe 'ConvertTo-PoshstacheTemplate' {
             $result | Should Be $resultOneLine
         }
 
-        It "Valid HashMap input - Array Template" {
+        It "Valid hashTable input - Array Template" {
             $result = "<p>John is 30 years old. He has the following cars:
     <ul>
         <li>Ford</li>
@@ -123,7 +123,7 @@ Describe 'ConvertTo-PoshstacheTemplate' {
     </ul>
 </p>"
             $resultOneLine = $result -replace '\r*\n', ''
-            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject @{"name"= 'John'; "cars" = @(@{"carname"="Ford"},@{"carname"="BMW"},@{"carname"="Fiat"});"age"=30} -HashMap
+            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject @{"name"= 'John'; "cars" = @(@{"carname"="Ford"},@{"carname"="BMW"},@{"carname"="Fiat"});"age"=30} -hashTable
             $result = $result  -replace '\r*\n', ''
             $result | Should Be $resultOneLine
         }
