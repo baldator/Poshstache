@@ -123,7 +123,7 @@ Describe 'ConvertTo-PoshstacheTemplate' {
     </ul>
 </p>"
             $resultOneLine = $result -replace '\r*\n', ''
-            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject @{"name"= 'John'; "cars" = @(@{"carname"="Ford"},@{"carname"="BMW"},@{"carname"="Fiat"});"age"=30} -hashTable
+            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject @{"name"= 'John'; "cars" = @("Ford","BMW","Fiat");"age"=30} -hashTable
             $result = $result  -replace '\r*\n', ''
             $result | Should Be $resultOneLine
         }
