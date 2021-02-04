@@ -11,7 +11,9 @@ function ConvertTo-PoshstacheTemplate{
     .PARAMETER ParametersObject
         A JSON String containing mustache parameters
     .PARAMETER ValidJSON
-        Switch to determine if true value in JSON input convert to PowerShell $true (default) or 'true' (switch present)
+        Switch to determine if boolean true value in JSON input has to be converted to PowerShell $true (default) or 'true' (switch present)
+    .PARAMETER HashTable
+        Switch to determine if the input object is a PowerShell Hashtable ($true)
     .EXAMPLE
         ConvertTo-PoshstacheTemplate -InputString "Hi {{name}}!" -ParameterObject @{name:'bob'}
     .EXAMPLE
@@ -27,8 +29,9 @@ function ConvertTo-PoshstacheTemplate{
         [Parameter(ParameterSetName='File',Mandatory=$true)]
         [Parameter(ParameterSetName='String',Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [String] $ParametersObject,
-        [Switch] $ValidJSON = $false
+        [psobject] $ParametersObject,
+        [Switch] $ValidJSON = $false,
+        [Switch] $HashTable = $false
     )
 
     if($PSCmdlet.ParameterSetName -eq "File"){
@@ -40,23 +43,28 @@ function ConvertTo-PoshstacheTemplate{
     $path = Get-ModulePath "Poshstache"
 
     #Check if input object is valid
-    try {
-        if($PSversiontable.psversion.Major -lt 6){
-            $JSonInput = ConvertFrom-JsonToHashtable $ParametersObject
-        }
-        else{
-            $JSonInput = ConvertFrom-Json $ParametersObject -asHashtable
-        }
+    Write-Verbose "Input object is HashTable: $HashTable"
+    if($HashTable){
+        $MustacheInput = $ParametersObject
     }
-    catch{
-        Throw $_
+    else{
+        try {
+            if($PSversiontable.psversion.Major -lt 6){
+                $MustacheInput = ConvertFrom-JsonToHashtable $ParametersObject
+            }
+            else{
+                $MustacheInput = ConvertFrom-Json $ParametersObject -asHashtable
+            }
+        }
+        catch{
+            Throw $_
+        }
     }
 
+    Write-Verbose "Convert object to valid JSON: $ValidJSON"
     if($ValidJSON){
-        $JSonInput = ConvertTo-ValidJson $JSonInput
+        $MustacheInput = ConvertTo-ValidJson $MustacheInput
     }
-
-    Write-verbose $JSonInput
 
     if($PSversiontable.psversion.Major -lt 6){
         $libPath = "$Path\binary\WindowsPowerShell"
@@ -74,15 +82,14 @@ function ConvertTo-PoshstacheTemplate{
 		Add-Type -Path "$libPath\Stubble.Core.dll"
 	}
 	catch{
-		$_.Exception.LoaderExceptions
-		{
+		$_.Exception.LoaderExceptions{
 			Throw $_
 		}
 	}
 
 	try{
 		$builder = [Stubble.Core.Builders.StubbleBuilder]::new().Build()
-		return $builder.render($InputString, $JsonInput)
+		return $builder.render($InputString, $MustacheInput)
 	} catch [Exception] {
 		$_.Exception.Message
 	}

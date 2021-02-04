@@ -1,7 +1,7 @@
 # Poshstache PowerShell module
 
 [![Build status](https://ci.appveyor.com/api/projects/status/gbqt5h9mat4124vr?svg=true)](https://ci.appveyor.com/project/baldator/poshstache)
-![Test Coverage](https://img.shields.io/badge/coverage-57%25-red.svg?maxAge=60)
+![Test Coverage](https://img.shields.io/badge/coverage-84%25-yellow.svg?maxAge=60)
 [![Poshstache](https://img.shields.io/powershellgallery/v/Poshstache.svg?style=flat-square&label=Poshstache)](https://www.powershellgallery.com/packages/Poshstache/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -56,6 +56,7 @@ ConvertTo-PoshstacheTemplate -InputFile "C:\Templates\template.config" -Paramete
 * [Mustache syntax reference](https://mustache.github.io/mustache.5.html)
 
 ## Release note
+v 0.1.10 - add -HashTable parameter \
 v 0.1.9 - add -ValidJSON parameter \
 v 0.1.8 - Windows PowerShell migrate to stubble \
 v 0.1.7 - Update stubble and add missing dependencies \
