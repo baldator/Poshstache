@@ -164,7 +164,7 @@ Describe 'ConvertTo-PoshstacheTemplate' {
 </p>"
             $resultOneLine = $result -replace '\r*\n', ''
             $inputString = Get-Content "$PSScriptRoot\..\Tests\assets\validArrayObject.js" -Raw
-            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArrayObject_template.html" -ParametersObject $inputString -ParametersObject @{"name"= 'John'; "cars" = @(@{"carname" = "Ford"},@{"carname" = "BMW"},@{"carname" = "Fiat"});"age"=30; "drivingLicence" = $true} -hashTable
+            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArrayObject_templateBool.html" -ParametersObject $inputString -ParametersObject @{"name"= 'John'; "cars" = @(@{"carname" = "Ford"},@{"carname" = "BMW"},@{"carname" = "Fiat"});"age"=30; "drivingLicence" = $true} -hashTable
             $result = $result  -replace '\r*\n', ''
             $result | Should Be $resultOneLine
         }
