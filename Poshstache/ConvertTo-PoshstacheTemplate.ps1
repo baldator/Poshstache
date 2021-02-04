@@ -82,8 +82,7 @@ function ConvertTo-PoshstacheTemplate{
 		Add-Type -Path "$libPath\Stubble.Core.dll"
 	}
 	catch{
-		$_.Exception.LoaderExceptions
-		{
+		$_.Exception.LoaderExceptions{
 			Throw $_
 		}
 	}
