@@ -45,17 +45,16 @@ function ConvertTo-PoshstacheTemplate{
     #Check if input object is valid
     Write-Verbose "Input object is HashTable: $HashTable"
     if($HashTable){
-        $JSONObject = $ParametersObject | ConvertTo-Json -Depth 4
-        Write-Verbose "Object converted to JSON: $JSONObject"
-        Write-Verbose $JSONObject.gettype()
+        $MustacheInput = $ParametersObject | ConvertTo-Json -Depth 4
+        Write-Verbose "Object converted to JSON: $MustacheInput"
     }
     else{
         try {
             if($PSversiontable.psversion.Major -lt 6){
-                $MustacheInput = ConvertFrom-JsonToHashtable $JSONObject
+                $MustacheInput = ConvertFrom-JsonToHashtable $ParametersObject
             }
             else{
-                $MustacheInput = ConvertFrom-Json $JSONObject -asHashtable
+                $MustacheInput = ConvertFrom-Json $ParametersObject -asHashtable
             }
         }
         catch{
@@ -63,11 +62,10 @@ function ConvertTo-PoshstacheTemplate{
         }
     }
 
+    Write-Verbose "Convert object to valid JSON: $ValidJSON"
     if($ValidJSON){
         $MustacheInput = ConvertTo-ValidJson $MustacheInput
     }
-
-    Write-verbose "Input object: $MustacheInput"
 
     if($PSversiontable.psversion.Major -lt 6){
         $libPath = "$Path\binary\WindowsPowerShell"
