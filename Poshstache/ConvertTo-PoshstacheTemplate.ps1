@@ -45,8 +45,7 @@ function ConvertTo-PoshstacheTemplate{
     #Check if input object is valid
     Write-Verbose "Input object is HashTable: $HashTable"
     if($HashTable){
-        $MustacheInput = $ParametersObject | ConvertTo-Json -Depth 4
-        Write-Verbose "Object converted to JSON: $MustacheInput"
+        $MustacheInput = $ParametersObject
     }
     else{
         try {
