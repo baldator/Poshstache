@@ -13,7 +13,7 @@ function ConvertTo-PoshstacheTemplate{
     .PARAMETER ValidJSON
         Switch to determine if boolean true value in JSON input has to be converted to PowerShell $true (default) or 'true' (switch present)
     .PARAMETER HashTable
-        Switch to determine if the imput object is a PowerShell Hashtable ($true)
+        Switch to determine if the input object is a PowerShell Hashtable ($true)
     .EXAMPLE
         ConvertTo-PoshstacheTemplate -InputString "Hi {{name}}!" -ParameterObject @{name:'bob'}
     .EXAMPLE
@@ -50,26 +50,24 @@ function ConvertTo-PoshstacheTemplate{
         Write-Verbose $JSONObject.gettype()
     }
     else{
-        $JSONObject = $ParametersObject
-    }
-
-    try {
-        if($PSversiontable.psversion.Major -lt 6){
-            $JSonInput = ConvertFrom-JsonToHashtable $JSONObject
+        try {
+            if($PSversiontable.psversion.Major -lt 6){
+                $MustacheInput = ConvertFrom-JsonToHashtable $JSONObject
+            }
+            else{
+                $MustacheInput = ConvertFrom-Json $JSONObject -asHashtable
+            }
         }
-        else{
-            $JSonInput = ConvertFrom-Json $JSONObject -asHashtable
+        catch{
+            Throw $_
         }
-    }
-    catch{
-        Throw $_
     }
 
     if($ValidJSON){
-        $JSonInput = ConvertTo-ValidJson $JSonInput
+        $MustacheInput = ConvertTo-ValidJson $MustacheInput
     }
 
-    Write-verbose "Input object: $JSonInput"
+    Write-verbose "Input object: $MustacheInput"
 
     if($PSversiontable.psversion.Major -lt 6){
         $libPath = "$Path\binary\WindowsPowerShell"
@@ -95,7 +93,7 @@ function ConvertTo-PoshstacheTemplate{
 
 	try{
 		$builder = [Stubble.Core.Builders.StubbleBuilder]::new().Build()
-		return $builder.render($InputString, $JsonInput)
+		return $builder.render($InputString, $MustacheInput)
 	} catch [Exception] {
 		$_.Exception.Message
 	}
