@@ -128,6 +128,33 @@ Describe 'ConvertTo-PoshstacheTemplate' {
             $result | Should Be $resultOneLine
         }
 
+        It "Valid hashTable input - Array Template with PS boolean" {
+            $result = "<p>John is 30 years old. Driving licence: true. He has the following cars:
+    <ul>
+        <li>Ford</li>
+        <li>BMW</li>
+        <li>Fiat</li>
+    </ul>
+</p>"
+            $resultOneLine = $result -replace '\r*\n', ''
+            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject @{"name"= 'John'; "cars" = @("Ford","BMW","Fiat");"age"=30; "drivingLicence" = $true} -hashTable -validJSON
+            $result = $result  -replace '\r*\n', ''
+            $result | Should Be $resultOneLine
+        }
+
+        It "Valid hashTable input - Array Template with PS boolean" {
+            $result = "<p>John is 30 years old. Driving licence: `$true. He has the following cars:
+    <ul>
+        <li>Ford</li>
+        <li>BMW</li>
+        <li>Fiat</li>
+    </ul>
+</p>"
+            $resultOneLine = $result -replace '\r*\n', ''
+            $result = ConvertTo-PoshstacheTemplate -InputFile "$PSScriptRoot\..\Tests\assets\validArray_template.html" -ParametersObject @{"name"= 'John'; "cars" = @("Ford","BMW","Fiat");"age"=30; "drivingLicence" = $true} -hashTable
+            $result = $result  -replace '\r*\n', ''
+            $result | Should Be $resultOneLine
+        }
 
         It "Valid JSON input - Array Template containing objects" {
             $result = "<p>John is 30 years old. He has the following cars:
