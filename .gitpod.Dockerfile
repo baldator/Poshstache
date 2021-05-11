@@ -1,5 +1,5 @@
 FROM gitpod/workspace-full:latest
-FROM microsoft/powershell:latest
+FROM mcr.microsoft.com/powershell:latest
 
 USER root
 # Install custom tools, runtime, etc.
